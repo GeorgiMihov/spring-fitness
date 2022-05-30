@@ -22,7 +22,12 @@ public class CalculatorEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "calculateCaloriesRequest")
     @ResponsePayload
     public CalculateCaloriesResponse calculateCalories(@RequestPayload CalculateCaloriesRequest request) {
-        //if ()
+        if (request.getAge() <= 0 || request.getHeight() <= 0 || request.getWeight() <= 0) {
+            final CalculateCaloriesResponse result = new CalculateCaloriesResponse();
+            result.setCalories(-1);
+            return result;
+        }
+
         int result = calculatorRepository.calculateCalories(request.getAge(), request.getHeight(), request.getWeight());
 
         CalculateCaloriesResponse response = new CalculateCaloriesResponse();
