@@ -33,4 +33,51 @@
             <xs:enumeration value="PLN"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:element name="calculateCaloriesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="age" type="xs:int"/>
+                <xs:element name="height" type="xs:double"/>
+                <xs:element name="weight" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="calculateCaloriesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="calories" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="searchRecipeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ingredient" type="xs:string"/>
+                <xs:element name="calories" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="searchRecipeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label" type="xs:string"/>
+                <xs:element name="source" type="xs:string"/>
+                <xs:element name="yield" type="xs:double"/>
+                <xs:sequence>
+                    <xs:element name="ingredientLines" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+                <xs:element name="calories" type="xs:double"/>
+                <xs:element name="totalWeight" type="xs:double"/>
+                <xs:element name="time" type="xs:double"/>
+                <xs:sequence>
+                    <xs:element name="mealType" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>
